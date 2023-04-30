@@ -6,6 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent {
+
+temacolor=
+{
+  texto:"text-green-700",
+  fondo:"bg-green-950",
+  textofondo:"text-white",
+}
   nombre: string = "Rafael Francisco";
   apellidos: string = "Serrano Urtecho";
   posicionlaboral: string = "Programador Web";
