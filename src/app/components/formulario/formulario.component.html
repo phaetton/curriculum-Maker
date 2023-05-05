@@ -1,7 +1,7 @@
 <div class="flex">
     <div class="w-1/3 overflow-y-scroll h-screen">
         <h2> Datos Generales</h2>
-        <!-- <div class="grid grid-cols-2">
+        <div class="grid grid-cols-2">
             <div class="p-2 m-2 col-span-2">
                 <label for="Foto">Foto</label>
                 <input type="text" placeholder="Foto">
@@ -31,9 +31,9 @@
                 <input type="text" [(ngModel)]="email" placeholder="Email">
             </div>
 
-        </div> -->
+        </div>
         <h2>Datos Adicionales</h2>
-<!-- 
+
         <div class="p-2 m-2 col-span-2">
 
             <label for="Resumen"> Perfil Profesional</label>
@@ -42,7 +42,7 @@
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Perfil profesional" [(ngModel)]="perfilprofesional"></textarea>
 
-        </div> -->
+        </div>
 
 
         <h3> Experiencia</h3>
@@ -52,47 +52,53 @@
         </p>
 
         <form [formGroup]="formulario">
-         
-            <div formArrayName="experienciaLaboral">
-                <div *ngFor="let trabajo of experienciaLaboral.controls; let i = index;" class="shadow-inner border border-gray-100  m-3 p-2">
 
-                    <!-- <button (click)="borrarTrabajo(i)" class="w-full flex justify-end"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-                      </svg>
-                      </button> -->
+            <div formArrayName="experienciaLaboral">
+                <div *ngFor="let trabajo of experienciaLaboral.controls; let i = index;"
+                    class="shadow-inner border border-gray-100  m-3 p-2">
+
+                    <button (click)="borrarexperienciaLaboral(i)" class="w-full flex justify-end"><svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                        </svg>
+                    </button>
 
                     <div class="grid grid-cols-2">
+
                         <div class="p-2 m-2">
                             <label for="posicionlaboral">posición laboral</label>
-                            <input type="text" formControlName="posicionlaboral" id="posicionlaboral" name="posicionlaboral" placeholder="posición laboral">
+                            <input type="text" formControlName="posicionlaboral" id="posicionlaboral"
+                                name="posicionlaboral" placeholder="posición laboral">
                         </div>
-                        <!-- <div class="p-2 m-2">
+
+                        <div class="p-2 m-2">
                             <label for="Empresa">Empresa</label>
                             <input type="text" formControlName="empresa" placeholder="Empresa">
                         </div>
-                        <div class="p-2 m-2">
 
+                        <div class="p-2 m-2">
                             <label for="Fecha de inicio">Fecha de Inicio</label>
                             <input type="text" formControlName="fechainicio" placeholder="Fecha de Inicio">
                         </div>
-                        <div class="p-2 m-2">
 
+                        <div class="p-2 m-2">
                             <label for="Fecha Fin">Fecha Finaliza</label>
                             <input type="text" formControlName="fechafin" placeholder="Fecha Finaliza">
                         </div>
-                        <div class="p-2 m-2">
 
+                        <div class="p-2 m-2">
                             <label for="Ciudad">Ciudad</label>
                             <input type="text" formControlName="ciudad" placeholder="Ciudad">
                         </div>
-                            <div class="p-2 m-2 col-span-2">
 
+                        <div class="p-2 m-2 col-span-2">
                             <label for="Resumen">Resumen</label>
-
                             <textarea id="message" rows="6" formControlName="resumen"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Resumen"></textarea>
-                        </div> -->
+                        </div>
 
 
                     </div>
@@ -100,9 +106,9 @@
             </div>
         </form>
 
-        <!-- <button class="bg-blue-100 text-blue-500 p-2 rounded-md my-2" (click)="anadirExperienciaLaboral()">
+        <button class="bg-blue-100 text-blue-500 p-2 rounded-md my-2" (click)="anadirexperienciaLaboral()">
             Añadir experiencia laboral
-        </button> -->
+        </button> 
 
 
         <h3>Formación académica</h3>
@@ -400,7 +406,6 @@
     </div>
 
     <div class="w-2/3 py-4 flex justify-center bg-gray-200">
-        {{formulario.value | json}}
 
         <div class="bg-white w-1/2  h-[600px] flex">
             <div class="w-2/3 p-4">
@@ -444,5 +449,12 @@
 
             </div>
         </div>
+<div class="bg-green-950">
 
+</div>
     </div>
+    <!-- 
+<div class="w-full">
+
+    {{formulario.value | json}}
+</div> -->
