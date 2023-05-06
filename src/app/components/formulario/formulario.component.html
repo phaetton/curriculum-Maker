@@ -638,13 +638,24 @@
                         <p class="text-minilg mt-2">Otras Actividades</p>
                         <div class="text-minism mt-1" *ngFor="let item of otrasactividades.value; let i = index;">
                             <p><b> {{item['titulo']}}</b> </p>
-                            <p> {{item['grado']}}  {{item['ciudad']}} </p>
+                            <p> {{item['grado']}} {{item['ciudad']}} </p>
                             <p> {{item['fechainicio'] | date:'LLLL-y'}} - {{item['fechafin'] | date:'LLLL-y'}} </p>
                             <p>{{item['resumen']}}</p>
                         </div>
                     </div>
                     <!-- fin otras actividades -->
 
+
+                    <!-- Prácticas -->
+                    <div *ngIf="practicas.length>0">
+                        <p class="text-minilg mt-2">Prácticas</p>
+                        <div class="text-minism mt-1" *ngFor="let item of practicas.value; let i = index;">
+                            <p><b> {{item['titulo']}} {{item['empresa']}} {{item['ciudad']}} </b> </p>
+                            <p> {{item['fechainicio'] | date:'LLLL-y'}} - {{item['fechafin'] | date:'LLLL-y'}} </p>
+                            <p>{{item['resumen']}}</p>
+                        </div>
+                    </div>
+                    <!-- fin Prácticas -->
 
                 </div>
 
