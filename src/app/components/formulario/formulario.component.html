@@ -190,7 +190,7 @@
 
                         <div class="grid grid-cols-2" [formGroupName]="i">
 
-                            <div class="p-2 m-2">
+                            <div class="p-2 m-2 col-span-2">
                                 <label for="titulo">titulo</label>
                                 <input type="text" formControlName="titulo" id="titulo" name="titulo"
                                     placeholder="titulo">
@@ -632,6 +632,20 @@
                         </div>
                     </div>
                     <!-- fin formación academica -->
+
+                    <!-- otras actividades -->
+                    <div *ngIf="otrasactividades.length>0">
+                        <p class="text-minilg mt-2">Otras Actividades</p>
+                        <div class="text-minism mt-1" *ngFor="let item of otrasactividades.value; let i = index;">
+                            <p><b> {{item['titulo']}}</b> </p>
+                            <p> {{item['grado']}}  {{item['ciudad']}} </p>
+                            <p> {{item['fechainicio'] | date:'LLLL-y'}} - {{item['fechafin'] | date:'LLLL-y'}} </p>
+                            <p>{{item['resumen']}}</p>
+                        </div>
+                    </div>
+                    <!-- fin otras actividades -->
+
+
                 </div>
 
                 <div class="w-1/3 {{temacolor.fondo}} {{temacolor.textofondo}} ">
