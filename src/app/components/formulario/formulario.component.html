@@ -667,6 +667,16 @@
                     </div>
                     <!-- fin Referencia -->
 
+                    <!-- Cursos Realizados -->
+                    <div *ngIf="cursosrealizados.length>0">
+                        <p class="text-minilg mt-2">Cursos Realizados</p>
+                        <div class="text-minism mt-1" *ngFor="let item of cursosrealizados.value; let i = index;">
+                            <p><b> {{item['curso']}} - {{item['instituto']}} </b> </p>
+                            <p> {{item['fechainicio'] | date:'LLLL-y'}} - {{item['fechafin'] | date:'LLLL-y'}} </p>
+                        </div>
+                    </div>
+                    <!-- fin cursos realizados -->
+
                 </div>
 
                 <div class="w-1/3 {{temacolor.fondo}} {{temacolor.textofondo}} ">
