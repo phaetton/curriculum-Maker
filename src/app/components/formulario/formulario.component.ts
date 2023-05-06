@@ -168,7 +168,7 @@ export class FormularioComponent implements OnInit {
   }
   anadirhabilidades() {
     const habilidadesFg = this.fb.group({
-      habilidades: new FormControl(''),
+      habilidad: new FormControl(''),
       nivel: new FormControl(''),
     })
     this.habilidades.push(habilidadesFg);
