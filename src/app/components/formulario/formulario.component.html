@@ -608,6 +608,9 @@
 
                     <p class="text-minilg mt-2 {{temacolor.texto}} ">Perfil profesional</p>
                     <div class="text-minism">{{formulario.value.posicionlaboral}}</div>
+
+
+                    <!-- experiencia laboral -->
                     <div *ngIf="experienciaLaboral.length>0">
                         <p class="text-minilg mt-2">Experiencia</p>
                         <div class="text-minism mt-1" *ngFor="let item of experienciaLaboral.value; let i = index;">
@@ -616,6 +619,8 @@
                             <p>{{item['resumen']}}</p>
                         </div>
                     </div>
+                    <!-- fin experiencia laboral -->
+
                 </div>
 
                 <div class="w-1/3 {{temacolor.fondo}} {{temacolor.textofondo}} ">
