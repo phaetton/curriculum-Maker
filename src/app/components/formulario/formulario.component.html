@@ -677,10 +677,19 @@
                     </div>
                     <!-- fin cursos realizados -->
 
+
+
                 </div>
 
-                <div class="w-1/3 {{temacolor.fondo}} {{temacolor.textofondo}} ">
-                    xxx
+                <div class="w-1/3 {{temacolor.fondo}} {{temacolor.textofondo}} p-4 text-white">
+                    <!-- Enlaces -->
+                    <div *ngIf="enlaces.length>0">
+                        <div class="text-minism mt-1" *ngFor="let item of enlaces.value; let i = index;">
+                            <p><b> {{item['etiqueta']}} </b> </p>
+                            <p> {{item['url'] }} </p>
+                        </div>
+                    </div>
+                    <!-- fin Enlaces -->
                 </div>
             </div>
             <div class="bg-green-950">
