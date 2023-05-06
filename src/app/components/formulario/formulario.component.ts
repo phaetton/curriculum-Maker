@@ -120,49 +120,63 @@ export class FormularioComponent implements OnInit {
   }
   anadirreferencias() {
     const referenciasFg = this.fb.group({
-      referencias: new FormControl(''),
+      referencia: new FormControl(''),
+      compania: new FormControl(''),
+      telefono: new FormControl(''),
+      email: new FormControl(''),
     })
     this.referencias.push(referenciasFg);
   }
   anadirpracticas() {
     const practicasFg = this.fb.group({
-      practicas: new FormControl(''),
+      titulo: new FormControl(''),
+      empresa: new FormControl(''),
+      fechainicio: new FormControl(''),
+      fechafin: new FormControl(''),
+      ciudad: new FormControl(''),
+      resumen: new FormControl(''),
     })
     this.practicas.push(practicasFg);
   }
   anadircursosrealizados() {
     const cursosrealizadosFg = this.fb.group({
-      cursosrealizados: new FormControl(''),
+      instituto: new FormControl(''),
+      curso: new FormControl(''),
+      fechainicio: new FormControl(''),
+      fechafin: new FormControl(''),  
     })
     this.cursosrealizados.push(cursosrealizadosFg);
   }
   anadirpermisodeconduccion() {
     const permisodeconduccionFg = this.fb.group({
-      permisodeconduccion: new FormControl(''),
+      titulo: new FormControl(''),
     })
     this.permisodeconduccion.push(permisodeconduccionFg);
   }
   anadirenlaces() {
     const enlacesFg = this.fb.group({
-      enlaces: new FormControl(''),
+      etiqueta: new FormControl(''),
+      url: new FormControl(''),
     })
     this.enlaces.push(enlacesFg);
   }
   anadirhobbies() {
     const hobbiesFg = this.fb.group({
-      hobbies: new FormControl(''),
+      resumen: new FormControl(''),
     })
     this.hobbies.push(hobbiesFg);
   }
   anadirhabilidades() {
     const habilidadesFg = this.fb.group({
       habilidades: new FormControl(''),
+      nivel: new FormControl(''),
     })
     this.habilidades.push(habilidadesFg);
   }
   anadiridiomas() {
     const idiomasFg = this.fb.group({
-      idiomas: new FormControl(''),
+      idioma: new FormControl(''),
+      nivel: new FormControl(''),
     })
     this.idiomas.push(idiomasFg);
   }
