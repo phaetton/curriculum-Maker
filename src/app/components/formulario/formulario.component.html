@@ -621,6 +621,17 @@
                     </div>
                     <!-- fin experiencia laboral -->
 
+
+                    <!-- formación academica -->
+                    <div *ngIf="formacionacademica.length>0">
+                        <p class="text-minilg mt-2">Formación Académica</p>
+                        <div class="text-minism mt-1" *ngFor="let item of formacionacademica.value; let i = index;">
+                            <p><b> {{item['escuela']}} - {{item['grado']}} ( {{item['ciudad']}} )</b> </p>
+                            <p> {{item['fechainicio'] | date:'LLLL-y'}} - {{item['fechafin'] | date:'LLLL-y'}} </p>
+                            <p>{{item['resumen']}}</p>
+                        </div>
+                    </div>
+                    <!-- fin formación academica -->
                 </div>
 
                 <div class="w-1/3 {{temacolor.fondo}} {{temacolor.textofondo}} ">
