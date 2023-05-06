@@ -1,57 +1,62 @@
+<div class="w-full">
+
+    {{formulario.value | json}}
+</div>
+
 <div class="flex">
+
     <div class="w-1/3 overflow-y-scroll h-screen">
-        <h2> Datos Generales</h2>
-        <div class="grid grid-cols-2">
-            <div class="p-2 m-2 col-span-2">
-                <label for="Foto">Foto</label>
-                <input type="text" placeholder="Foto">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="nombre">Nombre</label>
-                <input type="text" [(ngModel)]="nombre" placeholder="Nombre">
-            </div>
-            <div class="p-2 m-2">
-                <label for="apellidos">Apellidos</label>
-                <input type="text" [(ngModel)]="apellidos" placeholder="Apellidos">
-            </div>
-            <div class="p-2 m-2">
-
-                <label for="posicionlaboral">Posición laboral</label>
-                <input type="text" [(ngModel)]="posicionlaboral" placeholder="Posición laboral">
-            </div>
-            <div class="p-2 m-2">
-
-                <label for="telefono">Telefono</label>
-                <input type="text" [(ngModel)]="telefono" placeholder="Telefono">
-            </div>
-            <div class="p-2 m-2">
-
-                <label for="email">Email</label>
-                <input type="text" [(ngModel)]="email" placeholder="Email">
-            </div>
-
-        </div>
-        <h2>Datos Adicionales</h2>
-
-        <div class="p-2 m-2 col-span-2">
-
-            <label for="Resumen"> Perfil Profesional</label>
-
-            <textarea id="message" rows="6"
-                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Perfil profesional" [(ngModel)]="perfilprofesional"></textarea>
-
-        </div>
-
-
-        <h3> Experiencia</h3>
-        <p class="nota">
-            Ordena la información desde los empleos más recientes hasta los más antiguos,
-            abarcando un periodo de no más de quince años.
-        </p>
-
         <form [formGroup]="formulario">
+            <h2> Datos Generales</h2>
+            <div class="grid grid-cols-2">
+                <div class="p-2 m-2 col-span-2">
+                    <label for="Foto">Foto</label>
+                    <input type="text" placeholder="Foto">
+                </div>
+
+                <div class="p-2 m-2">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" formControlName="nombre" placeholder="Nombre">
+                </div>
+                <div class="p-2 m-2">
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" formControlName="apellidos" placeholder="Apellidos">
+                </div>
+                <div class="p-2 m-2">
+
+                    <label for="posicionlaboral">Posición laboral</label>
+                    <input type="text" formControlName="posicionlaboral" placeholder="Posición laboral">
+                </div>
+                <div class="p-2 m-2">
+
+                    <label for="telefono">Telefono</label>
+                    <input type="text" formControlName="telefono" placeholder="Telefono">
+                </div>
+                <div class="p-2 m-2">
+
+                    <label for="email">Email</label>
+                    <input type="text" formControlName="email" placeholder="Email">
+                </div>
+
+            </div>
+            <h2>Datos Adicionales</h2>
+
+            <div class="p-2 m-2 col-span-2">
+
+                <label for="Perfil profesional"> Perfil Profesional</label>
+
+                <textarea id="message" rows="6"
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Perfil profesional" formControlName="perfilprofesional"></textarea>
+
+            </div>
+
+
+            <h3> Experiencia</h3>
+            <p class="nota">
+                Ordena la información desde los empleos más recientes hasta los más antiguos,
+                abarcando un periodo de no más de quince años.
+            </p>
 
             <div formArrayName="experienciaLaboral">
                 <div *ngFor="let trabajo of experienciaLaboral.controls; let i = index;"
@@ -65,7 +70,7 @@
                         </svg>
                     </button>
 
-                    <div class="grid grid-cols-2">
+                    <div class="grid grid-cols-2" [formGroupName]="i">
 
                         <div class="p-2 m-2">
                             <label for="posicionlaboral">posición laboral</label>
@@ -104,317 +109,345 @@
                     </div>
                 </div>
             </div>
+
+            <button class="bg-blue-100 text-blue-500 p-2 rounded-md my-2" (click)="anadirexperienciaLaboral()">
+                Añadir experiencia laboral
+            </button>
+
+
+            <h3>Formación académica</h3>
+            <span class="nota">
+                Incluye los títulos académicos con los que cuentes, ordenados desde el más reciente hasta el más
+                antiguo.
+            </span>
+
+            <div formArrayName="formacionacademica">
+                <div *ngFor="let trabajo of formacionacademica.controls; let i = index;"
+                    class="shadow-inner border border-gray-100  m-3 p-2">
+
+                    <button (click)="borrarformacionacademica(i)" class="w-full flex justify-end"><svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                        </svg>
+                    </button>
+
+                    <div class="grid grid-cols-2" [formGroupName]="i">
+
+                        <div class="p-2 m-2">
+                            <label for="escuela">Escuela</label>
+                            <input type="text" formControlName="escuela" id="escuela" name="escuela"
+                                placeholder="Escuela">
+                        </div>
+
+                        <div class="p-2 m-2">
+                            <label for="grado">grado</label>
+                            <input type="text" formControlName="grado" placeholder="grado">
+                        </div>
+
+                        <div class="p-2 m-2">
+                            <label for="Fecha de inicio">Fecha de Inicio</label>
+                            <input type="text" formControlName="fechainicio" placeholder="Fecha de Inicio">
+                        </div>
+
+                        <div class="p-2 m-2">
+                            <label for="Fecha Fin">Fecha Finaliza</label>
+                            <input type="text" formControlName="fechafin" placeholder="Fecha Finaliza">
+                        </div>
+
+                        <div class="p-2 m-2">
+                            <label for="Ciudad">Ciudad</label>
+                            <input type="text" formControlName="ciudad" placeholder="Ciudad">
+                        </div>
+
+                        <div class="p-2 m-2 col-span-2">
+                            <label for="Resumen">Resumen</label>
+                            <textarea id="message" rows="6" formControlName="resumen"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Resumen"></textarea>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <button class="bg-blue-100 text-blue-500 p-2 rounded-md my-2" (click)="anadirformacionacademica()">
+                Añadir formación académica
+            </button>
+
+            <h3>Otras actividades</h3>
+            <span class="nota">
+                Añade cualquier actividad que esté relacionada con el puesto ofertado
+            </span>
+
+            <div formArrayName="otrasactividades">
+                <div *ngFor="let trabajo of otrasactividades.controls; let i = index;"
+                    class="shadow-inner border border-gray-100  m-3 p-2">
+
+                    <button (click)="borrarotrasactividades(i)" class="w-full flex justify-end"><svg
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                        </svg>
+                    </button>
+
+                    <div class="grid grid-cols-2" [formGroupName]="i">
+
+                        <div class="p-2 m-2">
+                            <label for="titulo">titulo</label>
+                            <input type="text" formControlName="titulo" id="titulo" name="titulo"
+                                placeholder="titulo">
+                        </div>
+
+                        <div class="p-2 m-2">
+                            <label for="grado">grado</label>
+                            <input type="text" formControlName="grado" placeholder="grado">
+                        </div>
+
+                        <div class="p-2 m-2">
+                            <label for="Fecha de inicio">Fecha de Inicio</label>
+                            <input type="text" formControlName="fechainicio" placeholder="Fecha de Inicio">
+                        </div>
+
+                        <div class="p-2 m-2">
+                            <label for="Fecha Fin">Fecha Finaliza</label>
+                            <input type="text" formControlName="fechafin" placeholder="Fecha Finaliza">
+                        </div>
+
+                        <div class="p-2 m-2">
+                            <label for="Ciudad">Ciudad</label>
+                            <input type="text" formControlName="ciudad" placeholder="Ciudad">
+                        </div>
+
+                        <div class="p-2 m-2 col-span-2">
+                            <label for="Resumen">Resumen</label>
+                            <textarea id="message" rows="6" formControlName="resumen"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Resumen"></textarea>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <button class="bg-blue-100 text-blue-500 p-2 rounded-md my-2" (click)="anadirotrasactividades()">
+                Añadir otras actividades
+            </button>
+
+            <h3>Prácticas</h3>
+            <span class="nota">
+                Añade las practicas realizadas en otras empresas. Recuerda incluir las más relevantes para el puesto al
+                que
+                optas.
+                Ordena desde el mas reciente al más antiguo
+            </span>
+
+
+            <div class="grid grid-cols-2">
+                <div class="p-2 m-2">
+                    <label for="Titulo">Titulo</label>
+                    <input type="text" placeholder="Titulo">
+                </div>
+                <div class="p-2 m-2">
+                    <label for="Empresa">Empresa</label>
+                    <input type="text" placeholder="Empresa">
+                </div>
+                <div class="p-2 m-2">
+
+                    <label for="Fecha de inicio">Fecha de Inicio</label>
+                    <input type="text" placeholder="Fecha de Inicio">
+                </div>
+                <div class="p-2 m-2">
+
+                    <label for="Fecha Fin">Fecha Finaliza</label>
+                    <input type="text" placeholder="Fecha Finaliza">
+                </div>
+                <div class="p-2 m-2">
+
+                    <label for="Ciudad">Ciudad</label>
+                    <input type="text" placeholder="Ciudad">
+                </div>
+                <div class="p-2 m-2 col-span-2">
+
+                    <label for="Resumen">Resumen</label>
+
+                    <textarea id="message" rows="6"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Resumen"></textarea>
+                </div>
+
+            </div>
+
+            <h3>Referencias</h3>
+            <span class="nota">
+                Referenciar a antiguos compañeros o jefes suele una buena idea para optar por un nuevo puesto
+            </span>
+
+            <div class="grid grid-cols-2">
+                <div class="p-2 m-2">
+                    <label for="Referencia">Referencia</label>
+                    <input type="text" placeholder="Referencia">
+                </div>
+                <div class="p-2 m-2">
+                    <label for="Compañia">Compañia</label>
+                    <input type="text" placeholder="Compañia">
+                </div>
+                <div class="p-2 m-2">
+
+                    <label for="Telefono">Telefono</label>
+                    <input type="text" placeholder="Telefono">
+                </div>
+                <div class="p-2 m-2">
+
+                    <label for="Email">Email</label>
+                    <input type="text" placeholder="Email">
+                </div>
+
+
+            </div>
+
+            <h3>Cursos realizados</h3>
+            <span class="nota">
+                Incluye la formación no reglada que te parezca relevante para el puesto, ordenados desde el más reciente
+                hasta
+                el más antiguo.</span>
+
+            <div class="grid grid-cols-2">
+
+                <div class="p-2 m-2">
+                    <label for="Curso">Curso</label>
+                    <input type="text" placeholder="Curso">
+                </div>
+
+
+                <div class="p-2 m-2">
+                    <label for="Centro de estudio">Centro de estudio</label>
+                    <input type="text" placeholder="Centro de estudio">
+                </div>
+
+                <div class="p-2 m-2">
+                    <label for="Fecha de inicio">Fecha de Inicio</label>
+                    <input type="text" placeholder="Fecha de Inicio">
+                </div>
+
+                <div class="p-2 m-2">
+                    <label for="Fecha Fin">Fecha Finaliza</label>
+                    <input type="text" placeholder="Fecha Finaliza">
+                </div>
+
+                <div class="p-2 m-2">
+                    <label for="Ciudad">Ciudad</label>
+                    <input type="text" placeholder="Ciudad">
+                </div>
+
+            </div>
+
+            <h2>Más información</h2>
+
+            <h3>Enlaces</h3>
+            <span class="nota">
+                Añade enlaces a páginas personales que puedan aportar un plus a tu currículum
+            </span>
+
+            <div class="grid grid-cols-2">
+
+                <div class="p-2 m-2">
+                    <label for="Etiqueta">Etiqueta</label>
+                    <input type="text" placeholder="Etiqueta">
+                </div>
+
+                <div class="p-2 m-2">
+                    <label for="Url">Url</label>
+                    <input type="text" placeholder="Url">
+                </div>
+
+            </div>
+
+
+            <h3>Permiso de conducción</h3>
+            <span class="nota">
+                Para muchos puestos de trabajo es importante que incluyas los permisos de conducción que posees, no
+                dudes en
+                incluirlos si es importante para el puesto que optas
+            </span>
+
+            <div class="grid grid-cols-2">
+
+                <div class="p-2 m-2">
+                    <label for="Titulo">Titulo</label>
+                    <input type="text" placeholder="Titulo">
+                </div>
+
+
+
+            </div>
+
+            <h3>Hobbies</h3>
+            <span class="nota">
+                Incluir tus intereses te ayudará a aportar tu parte más personal al currículum
+            </span>
+            <div class="p-2 m-2">
+                <label for="Hobbies">Hobbies</label>
+                <input type="text" placeholder="Hobbies">
+            </div>
+
+            <h3>Habilidades</h3>
+            <span class="nota">
+                Añade un listado con habilidades que poseas y que puedan aportar valor al puesto al que optas
+            </span>
+
+            <div class="grid grid-cols-2">
+
+                <div class="p-2 m-2">
+                    <label for="Habilidad">Habilidad</label>
+                    <input type="text" placeholder="Habilidad">
+                </div>
+
+                <div class="p-2 m-2">
+                    <label for="Nivel">Nivel</label>
+                    <input type="text" placeholder="Nivel">
+                </div>
+
+            </div>
+
+
+            <h3>Idiomas</h3>
+            <span class="nota">
+                Los idiomas son fundamentales para posicionarte, no dudes en añadirlos
+            </span>
+
+            <div class="grid grid-cols-2">
+
+                <div class="p-2 m-2">
+                    <label for="Idioma">Idioma</label>
+                    <input type="text" placeholder="Idioma">
+                </div>
+
+                <div class="p-2 m-2">
+                    <label for="Nivel">Nivel</label>
+                    <input type="text" placeholder="Nivel">
+                </div>
+
+            </div>
         </form>
-
-        <button class="bg-blue-100 text-blue-500 p-2 rounded-md my-2" (click)="anadirexperienciaLaboral()">
-            Añadir experiencia laboral
-        </button> 
-
-
-        <h3>Formación académica</h3>
-        <span class="nota">
-            Incluye los títulos académicos con los que cuentes, ordenados desde el más reciente hasta el más antiguo.
-        </span>
-
-
-        <div class="grid grid-cols-2">
-
-            <div class="p-2 m-2">
-                <label for="Escuela">Escuela</label>
-                <input type="text" placeholder="Escuela">
-            </div>
-
-
-            <div class="p-2 m-2">
-                <label for="Grado">Grado</label>
-                <input type="text" placeholder="Grado">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Ciudad">Ciudad</label>
-                <input type="text" placeholder="Ciudad">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Fecha de inicio">Fecha de Inicio</label>
-                <input type="text" placeholder="Fecha de Inicio">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Fecha Fin">Fecha Finaliza</label>
-                <input type="text" placeholder="Fecha Finaliza">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Ciudad">Ciudad</label>
-                <input type="text" placeholder="Ciudad">
-            </div>
-
-            <div class="p-2 m-2 col-span-2">
-                <label for="Resumen">Resumen</label>
-
-                <textarea id="message" rows="6"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Resumen"></textarea>
-            </div>
-
-
-        </div>
-
-        <h3>Otras actividades</h3>
-        <span class="nota">
-            Añade cualquier actividad que esté relacionada con el puesto ofertado
-        </span>
-
-        <div class="grid grid-cols-2">
-
-            <div class="p-2 m-2">
-                <label for="Titulo">Titulo</label>
-                <input type="text" placeholder="Titulo">
-            </div>
-
-
-            <div class="p-2 m-2">
-                <label for="Grado">Grado</label>
-                <input type="text" placeholder="Grado">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Ciudad">Ciudad</label>
-                <input type="text" placeholder="Ciudad">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Fecha de inicio">Fecha de Inicio</label>
-                <input type="text" placeholder="Fecha de Inicio">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Fecha Fin">Fecha Finaliza</label>
-                <input type="text" placeholder="Fecha Finaliza">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Ciudad">Ciudad</label>
-                <input type="text" placeholder="Ciudad">
-            </div>
-
-            <div class="p-2 m-2 col-span-2">
-                <label for="Resumen">Resumen</label>
-
-                <textarea id="message" rows="6"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Resumen"></textarea>
-            </div>
-
-
-        </div>
-
-        <h3>Prácticas</h3>
-        <span class="nota">
-            Añade las practicas realizadas en otras empresas. Recuerda incluir las más relevantes para el puesto al que
-            optas.
-            Ordena desde el mas reciente al más antiguo
-        </span>
-
-
-        <div class="grid grid-cols-2">
-            <div class="p-2 m-2">
-                <label for="Titulo">Titulo</label>
-                <input type="text" placeholder="Titulo">
-            </div>
-            <div class="p-2 m-2">
-                <label for="Empresa">Empresa</label>
-                <input type="text" placeholder="Empresa">
-            </div>
-            <div class="p-2 m-2">
-
-                <label for="Fecha de inicio">Fecha de Inicio</label>
-                <input type="text" placeholder="Fecha de Inicio">
-            </div>
-            <div class="p-2 m-2">
-
-                <label for="Fecha Fin">Fecha Finaliza</label>
-                <input type="text" placeholder="Fecha Finaliza">
-            </div>
-            <div class="p-2 m-2">
-
-                <label for="Ciudad">Ciudad</label>
-                <input type="text" placeholder="Ciudad">
-            </div>
-            <div class="p-2 m-2 col-span-2">
-
-                <label for="Resumen">Resumen</label>
-
-                <textarea id="message" rows="6"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Resumen"></textarea>
-            </div>
-
-        </div>
-
-        <h3>Referencias</h3>
-        <span class="nota">
-            Referenciar a antiguos compañeros o jefes suele una buena idea para optar por un nuevo puesto
-        </span>
-
-        <div class="grid grid-cols-2">
-            <div class="p-2 m-2">
-                <label for="Referencia">Referencia</label>
-                <input type="text" placeholder="Referencia">
-            </div>
-            <div class="p-2 m-2">
-                <label for="Compañia">Compañia</label>
-                <input type="text" placeholder="Compañia">
-            </div>
-            <div class="p-2 m-2">
-
-                <label for="Telefono">Telefono</label>
-                <input type="text" placeholder="Telefono">
-            </div>
-            <div class="p-2 m-2">
-
-                <label for="Email">Email</label>
-                <input type="text" placeholder="Email">
-            </div>
-
-
-        </div>
-
-        <h3>Cursos realizados</h3>
-        <span class="nota">
-            Incluye la formación no reglada que te parezca relevante para el puesto, ordenados desde el más reciente
-            hasta
-            el más antiguo.</span>
-
-        <div class="grid grid-cols-2">
-
-            <div class="p-2 m-2">
-                <label for="Curso">Curso</label>
-                <input type="text" placeholder="Curso">
-            </div>
-
-
-            <div class="p-2 m-2">
-                <label for="Centro de estudio">Centro de estudio</label>
-                <input type="text" placeholder="Centro de estudio">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Fecha de inicio">Fecha de Inicio</label>
-                <input type="text" placeholder="Fecha de Inicio">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Fecha Fin">Fecha Finaliza</label>
-                <input type="text" placeholder="Fecha Finaliza">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Ciudad">Ciudad</label>
-                <input type="text" placeholder="Ciudad">
-            </div>
-
-        </div>
-
-        <h2>Más información</h2>
-
-        <h3>Enlaces</h3>
-        <span class="nota">
-            Añade enlaces a páginas personales que puedan aportar un plus a tu currículum
-        </span>
-
-        <div class="grid grid-cols-2">
-
-            <div class="p-2 m-2">
-                <label for="Etiqueta">Etiqueta</label>
-                <input type="text" placeholder="Etiqueta">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Url">Url</label>
-                <input type="text" placeholder="Url">
-            </div>
-
-        </div>
-
-
-        <h3>Permiso de conducción</h3>
-        <span class="nota">
-            Para muchos puestos de trabajo es importante que incluyas los permisos de conducción que posees, no dudes en
-            incluirlos si es importante para el puesto que optas
-        </span>
-
-        <div class="grid grid-cols-2">
-
-            <div class="p-2 m-2">
-                <label for="Titulo">Titulo</label>
-                <input type="text" placeholder="Titulo">
-            </div>
-
-
-
-        </div>
-
-        <h3>Hobbies</h3>
-        <span class="nota">
-            Incluir tus intereses te ayudará a aportar tu parte más personal al currículum
-        </span>
-        <div class="p-2 m-2">
-            <label for="Hobbies">Hobbies</label>
-            <input type="text" placeholder="Hobbies">
-        </div>
-
-        <h3>Habilidades</h3>
-        <span class="nota">
-            Añade un listado con habilidades que poseas y que puedan aportar valor al puesto al que optas
-        </span>
-
-        <div class="grid grid-cols-2">
-
-            <div class="p-2 m-2">
-                <label for="Habilidad">Habilidad</label>
-                <input type="text" placeholder="Habilidad">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Nivel">Nivel</label>
-                <input type="text" placeholder="Nivel">
-            </div>
-
-        </div>
-
-
-        <h3>Idiomas</h3>
-        <span class="nota">
-            Los idiomas son fundamentales para posicionarte, no dudes en añadirlos
-        </span>
-
-        <div class="grid grid-cols-2">
-
-            <div class="p-2 m-2">
-                <label for="Idioma">Idioma</label>
-                <input type="text" placeholder="Idioma">
-            </div>
-
-            <div class="p-2 m-2">
-                <label for="Nivel">Nivel</label>
-                <input type="text" placeholder="Nivel">
-            </div>
-
-        </div>
     </div>
+
+
 
     <div class="w-2/3 py-4 flex justify-center bg-gray-200">
 
         <div class="bg-white w-1/2  h-[600px] flex">
             <div class="w-2/3 p-4">
                 <div class="flex flex-wrap space-x-1 text-minixl">
-                    <div>{{nombre}}</div>
-                    <div>{{apellidos}}</div>
+                    <div>{{formulario.value.nombre}}</div>
+                    <div>{{formulario.value.apellidos}}</div>
                 </div>
 
-                <div class="text-minibase mt-2">{{posicionlaboral}}</div>
+                <div class="text-minibase mt-2">{{formulario.value.posicionlaboral}}</div>
                 <div class="flex space-x-2 text-minibase">
                     <div class="flex mt-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -422,7 +455,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                         </svg>
-                        {{telefono}}
+                        {{formulario.value.telefono}}
                     </div>
 
                     <div class="flex mt-2">
@@ -432,13 +465,13 @@
                                 d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                         </svg>
 
-                        <div>{{email}}</div>
+                        <div>{{formulario.value.email}}</div>
                     </div>
                 </div>
 
                 <p class="text-minilg mt-2 {{temacolor.texto}} ">Perfil profesional</p>
 
-                <div class="text-minism">{{perfilprofesional}}</div>
+                <div class="text-minism">{{formulario.value.perfilprofesional}}</div>
 
                 <p class="text-minilg mt-2">Experiencia</p>
 
@@ -449,12 +482,7 @@
 
             </div>
         </div>
-<div class="bg-green-950">
+        <div class="bg-green-950">
 
-</div>
+        </div>
     </div>
-    <!-- 
-<div class="w-full">
-
-    {{formulario.value | json}}
-</div> -->
