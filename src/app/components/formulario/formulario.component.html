@@ -1,7 +1,7 @@
-<div class="flex flex-col sm:flex-row justify-evenly bg-gray-200">
+<div class="flex flex-col sm:flex-row justify-evenly bg-gray-200 dark:bg-gray-950">
 
 
-    <div class=" overflow-y-scroll  h-screen flex justify-center bg-gray-100 p-5">
+    <div class=" overflow-y-scroll  h-screen flex justify-center bg-gray-100 dark:bg-gray-900 p-5">
         <form [formGroup]="formulario" class="max-w-md">
             <h2> Datos Generales</h2>
             <div class="grid grid-cols-2">
@@ -48,7 +48,7 @@
 
             </div>
 
-            <h3> Experiencia</h3>
+            <h3 class="dark:text-white"> Experiencia</h3>
             <p class="nota">
                 Ordena la información desde los empleos más recientes hasta los más antiguos,
                 abarcando un periodo de no más de quince años.
@@ -56,7 +56,7 @@
 
             <div formArrayName="experienciaLaboral">
                 <div *ngFor="let trabajo of experienciaLaboral.controls; let i = index;"
-                    class="shadow-inner border border-gray-100 bg-white  m-3 p-2">
+                    class="shadow-inner border border-gray-100 bg-white dark:bg-gray-800  m-3 p-2">
 
                     <button (click)="borrarexperienciaLaboral(i)" class="w-full flex justify-end"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -110,7 +110,7 @@
             </button>
 
 
-            <h3>Formación Académica</h3>
+            <h3 class="dark:text-white">Formación Académica</h3>
             <span class="nota">
                 Incluye los títulos académicos con los que cuentes, ordenados desde el más reciente hasta el más
                 antiguo.
@@ -118,7 +118,7 @@
 
             <div formArrayName="formacionacademica">
                 <div *ngFor="let trabajo of formacionacademica.controls; let i = index;"
-                    class="shadow-inner border border-gray-100 bg-white  m-3 p-2">
+                    class="shadow-inner border border-gray-100 bg-white dark:bg-gray-800  m-3 p-2">
 
                     <button (click)="borrarformacionacademica(i)" class="w-full flex justify-end"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -172,14 +172,14 @@
                 Añadir Formación Académica
             </button>
 
-            <h3>Otras Actividades</h3>
+            <h3 class="dark:text-white">Otras Actividades</h3>
             <span class="nota">
                 Añade cualquier actividad que esté relacionada con el puesto ofertado
             </span>
 
             <div formArrayName="otrasactividades">
                 <div *ngFor="let trabajo of otrasactividades.controls; let i = index;"
-                    class="shadow-inner border border-gray-100 bg-white  m-3 p-2">
+                    class="shadow-inner border border-gray-100 bg-white dark:bg-gray-800  m-3 p-2">
 
                     <button (click)="borrarotrasactividades(i)" class="w-full flex justify-end"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -231,7 +231,7 @@
                 Añadir Otras Actividades
             </button>
 
-            <h3>Prácticas</h3>
+            <h3 class="dark:text-white">Prácticas</h3>
             <span class="nota">
                 Añade las practicas realizadas en otras empresas. Recuerda incluir las más relevantes para el puesto
                 al
@@ -240,7 +240,7 @@
 
             <div formArrayName="practicas">
                 <div *ngFor="let trabajo of practicas.controls; let i = index;"
-                    class="shadow-inner border border-gray-100 bg-white  m-3 p-2">
+                    class="shadow-inner border border-gray-100 bg-white dark:bg-gray-800  m-3 p-2">
 
                     <button (click)="borrarpracticas(i)" class="w-full flex justify-end"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -291,14 +291,14 @@
                 Añadir Practica
             </button>
 
-            <h3>Referencias</h3>
+            <h3 class="dark:text-white">Referencias</h3>
             <span class="nota">
                 Referenciar a antiguos compañeros o jefes suele una buena idea para optar por un nuevo puesto
             </span>
 
             <div formArrayName="referencias">
                 <div *ngFor="let trabajo of referencias.controls; let i = index;"
-                    class="shadow-inner border border-gray-100 bg-white  m-3 p-2">
+                    class="shadow-inner border border-gray-100 bg-white dark:bg-gray-800  m-3 p-2">
 
                     <button (click)="borrarreferencias(i)" class="w-full flex justify-end"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -339,7 +339,7 @@
                 Añadir Referencia
             </button>
 
-            <h3>Cursos Realizados</h3>
+            <h3 class="dark:text-white">Cursos Realizados</h3>
             <span class="nota">
                 Incluye la formación no reglada que te parezca relevante para el puesto, ordenados desde el más
                 reciente
@@ -348,7 +348,7 @@
 
             <div formArrayName="cursosrealizados">
                 <div *ngFor="let trabajo of cursosrealizados.controls; let i = index;"
-                    class="shadow-inner border border-gray-100 bg-white  m-3 p-2">
+                    class="shadow-inner border border-gray-100 bg-white dark:bg-gray-800  m-3 p-2">
 
                     <button (click)="borrarcursosrealizados(i)" class="w-full flex justify-end"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -390,14 +390,14 @@
 
             <h2>Más información</h2>
 
-            <h3>Enlaces</h3>
+            <h3 class="dark:text-white">Enlaces</h3>
             <span class="nota">
                 Añade enlaces a páginas personales que puedan aportar un plus a tu currículum
             </span>
 
             <div formArrayName="enlaces">
                 <div *ngFor="let trabajo of enlaces.controls; let i = index;"
-                    class="shadow-inner border border-gray-100 bg-white  m-3 p-2">
+                    class="shadow-inner border border-gray-100 bg-white dark:bg-gray-800  m-3 p-2">
 
                     <button (click)="borrarenlaces(i)" class="w-full flex justify-end"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -428,7 +428,7 @@
                 Añadir Enlace
             </button>
 
-            <h3>Permiso De Conducir</h3>
+            <h3 class="dark:text-white">Permiso De Conducir</h3>
             <span class="nota">
                 Para muchos puestos de trabajo es importante que incluyas los permisos de conducir que posees, no
                 dudes en
@@ -437,7 +437,7 @@
 
             <div formArrayName="permisodeconduccion">
                 <div *ngFor="let trabajo of permisodeconduccion.controls; let i = index;"
-                    class="shadow-inner border border-gray-100 bg-white  m-3 p-2">
+                    class="shadow-inner border border-gray-100 bg-white dark:bg-gray-800  m-3 p-2">
 
                     <button (click)="borrarpermisodeconduccion(i)" class="w-full flex justify-end"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -462,13 +462,13 @@
                 Añadir Permiso De Conducir
             </button>
 
-            <h3>Hobbies</h3>
+            <h3 class="dark:text-white">Hobbies</h3>
             <span class="nota">
                 Incluir tus intereses te ayudará a aportar tu parte más personal al currículum
             </span>
             <div formArrayName="hobbies">
                 <div *ngFor="let trabajo of hobbies.controls; let i = index;"
-                    class="shadow-inner border border-gray-100 bg-white  m-3 p-2">
+                    class="shadow-inner border border-gray-100 bg-white dark:bg-gray-800  m-3 p-2">
 
                     <button (click)="borrarhobbies(i)" class="w-full flex justify-end"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -493,13 +493,13 @@
                 Añadir Hobbie
             </button>
 
-            <h3>Habilidades</h3>
+            <h3 class="dark:text-white">Habilidades</h3>
             <span class="nota">
                 Añade un listado con habilidades que poseas y que puedan aportar valor al puesto al que optas
             </span>
             <div formArrayName="habilidades">
                 <div *ngFor="let trabajo of habilidades.controls; let i = index;"
-                    class="shadow-inner border border-gray-100 bg-white  m-3 p-2">
+                    class="shadow-inner border border-gray-100 bg-white dark:bg-gray-800  m-3 p-2">
 
                     <button (click)="borrarhabilidades(i)" class="w-full flex justify-end"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -536,14 +536,14 @@
             </button>
 
 
-            <h3>Idiomas</h3>
+            <h3 class="dark:text-white">Idiomas</h3>
             <span class="nota">
                 Los idiomas son fundamentales para posicionarte, no dudes en añadirlos
             </span>
 
             <div formArrayName="idiomas">
                 <div *ngFor="let trabajo of idiomas.controls; let i = index;"
-                    class="shadow-inner border border-gray-100 bg-white  m-3 p-2">
+                    class="shadow-inner border border-gray-100 bg-white dark:bg-gray-800  m-3 p-2">
 
                     <button (click)="borraridiomas(i)" class="w-full flex justify-end"><svg
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -691,7 +691,7 @@
                 <!-- fin cursos realizados -->
             </div>
 
-            <div class="w-1/3 {{temacolor.fondo}} {{temacolor.textofondo}} p-4 text-white">
+            <div class="w-1/3 p-4 text-white bg-green-950">
                 <!-- Enlaces -->
                 <div *ngIf="enlaces.length>0">
                     <div class="text-minism mt-1" *ngFor="let item of enlaces.value; let i = index;">
