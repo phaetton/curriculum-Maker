@@ -1,7 +1,7 @@
-<div class="flex justify-evenly bg-gray-200">
+<div class="flex flex-col sm:flex-row justify-evenly bg-gray-200">
 
 
-    <div class=" overflow-y-scroll h-screen flex justify-center bg-gray-100 p-5">
+    <div class=" overflow-y-scroll  h-screen flex justify-center bg-gray-100 p-5">
         <form [formGroup]="formulario" class="max-w-md">
             <h2> Datos Generales</h2>
             <div class="grid grid-cols-2">
@@ -583,9 +583,9 @@
         </form>
     </div>
 
-    <div class="max-w-lg w-2/3 py-4 flex justify-center ">
+    <div class="max-w-lg sm:w-2/3 py-4 flex justify-center ">
 
-        <div class="bg-white w-4/5  h-[550px] flex">
+        <div class="bg-white w-full sm:w-4/5  h-[550px] flex">
             <div class="w-2/3 p-4">
                 <div class="flex flex-wrap space-x-1 text-minixl">
                     <div>{{formulario.value.nombre | titlecase}}</div>
