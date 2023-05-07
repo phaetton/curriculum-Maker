@@ -1,3 +1,6 @@
+ng build --configuration production --base-href="https://phaetton.github.io/curriculum-Maker/"
+npx angular-cli-ghpages - dir=dist
+
 # CurriculumMaker
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
