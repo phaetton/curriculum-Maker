@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas'; // Todavía no lo usamos
+
+
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
@@ -18,7 +22,41 @@ export class FormularioComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
 
+    this.downloadPDF();
   }
+
+    // tslint:disable-next-line:typedef
+  downloadPDF() {
+    // Extraemos el
+    const DATA = document.getElementById('htmlData');
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale:2
+    };
+    html2canvas(DATA!, options).then((canvas) => {
+
+      const img = canvas.toDataURL('image/PNG');
+
+      // Add image Canvas to PDF
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`tutorial.pdf`);
+    });
+  }
+
+  // public downloadPDF(): void {
+  //   const doc = new jsPDF();
+
+  //   doc.text('Hello world!', 10, 10);
+  //   doc.save('hello-world.pdf');
+  // }
 
   ngOnInit(): void {
     this.crearFormulario();

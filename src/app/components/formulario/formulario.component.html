@@ -583,9 +583,9 @@
         </form>
     </div>
 
-    <div class="max-w-lg sm:w-2/3 py-4 flex justify-center ">
+    <div class="max-w-lg sm:w-2/3 py-4 flex flex-wrap justify-center ">
 
-        <div class="bg-white w-full sm:w-4/5  h-[550px] flex">
+        <div class="bg-white w-full sm:w-4/5  h-[550px] flex overflow-hidden " id='htmlData' >
             <div class="w-2/3 p-4">
                 <div class="flex flex-wrap space-x-1 text-minixl">
                     <div>{{formulario.value.nombre | titlecase}}</div>
@@ -743,5 +743,9 @@
 
             </div>
         </div>
-     
+
+
+
+        <button class="bg-blue-950 text-white p-2" (click)="downloadPDF()">Download PDF</button>
     </div>
+</div>
